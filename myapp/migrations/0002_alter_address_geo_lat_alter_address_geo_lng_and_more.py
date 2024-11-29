@@ -13,12 +13,12 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='address',
             name='geo_lat',
-            field=models.DecimalField(decimal_places=6, max_digits=20),
+            field=models.DecimalField(decimal_places=6, max_digits=20,default=0.0),
         ),
         migrations.AlterField(
             model_name='address',
             name='geo_lng',
-            field=models.DecimalField(decimal_places=6, max_digits=20),
+            field=models.DecimalField(decimal_places=6, max_digits=20,default=0.0),
         ),
         migrations.AlterField(
             model_name='address',
