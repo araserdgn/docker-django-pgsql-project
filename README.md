@@ -10,3 +10,5 @@ proje_adi/
 │   └── urls.py               # URL yönlendirmeleri
 ├── Dockerfile                # Docker yapılandırma dosyası
 └── requirements.txt          # Proje bağımlılıkları
+
+<p> docker-compose run web python manage.py test myapp.tests</p>
