@@ -6,7 +6,7 @@ class Company(models.Model):
     name = models.CharField(max_length=200)
     catch_phrase = models.CharField(max_length=200)
     bs = models.CharField(max_length=200)
-    user = models.ForeignKey(User, related_name='company', on_delete=models.CASCADE)
+    user = models.OneToOneField('User', on_delete=models.CASCADE, related_name='company')
 
     def __str__(self):
         return self.name

@@ -8,7 +8,7 @@ class Address(models.Model):
     zipcode = models.CharField(max_length=20)
     geo_lat = models.DecimalField(max_digits=20, decimal_places=6)
     geo_lng = models.DecimalField(max_digits=20, decimal_places=6)
-    user = models.ForeignKey(User, related_name='address', on_delete=models.CASCADE)
+    user = models.OneToOneField('User', on_delete=models.CASCADE, related_name='address')
 
     def __str__(self):
         return f"{self.street}, {self.city}"
