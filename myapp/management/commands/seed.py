@@ -1,7 +1,7 @@
 import random
 from faker import Faker
 from django.core.management.base import BaseCommand
-from myapp.models import User, Post, Comment, Album, Photo, Todo
+from myapp.models import User, Post, Comment, Album, Photo, Todo, Address, Company
 
 fake = Faker()
 
@@ -22,7 +22,8 @@ class Command(BaseCommand):
             )
 
             # Adres ve Şirket Bilgisi Ekle
-            user.address.create(
+            Address.objects.create(
+                user=user,  # User ilişkilendirilir
                 street=fake.street_name(),
                 suite=fake.secondary_address(),
                 city=fake.city(),
@@ -30,7 +31,8 @@ class Command(BaseCommand):
                 geo_lat=fake.latitude(),
                 geo_lng=fake.longitude(),
             )
-            user.company.create(
+            Company.objects.create(
+                user=user,  # User ilişkilendirilir
                 name=fake.company(),
                 catch_phrase=fake.catch_phrase(),
                 bs=fake.bs(),
@@ -47,10 +49,10 @@ class Command(BaseCommand):
                 # Yorum ekle
                 for _ in range(random.randint(1, 3)):
                     Comment.objects.create(
-                        post=post,
                         name=fake.name(),
                         email=fake.email(),
                         body=fake.text(),
+                        post=post,
                     )
 
             # Albüm ve Fotoğraf ekle
